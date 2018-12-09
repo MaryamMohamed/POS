@@ -6,8 +6,9 @@
 package login;
 
 //import core.Employee;
+import core.Employee;
 import javafx.stage.Stage;
-
+import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
@@ -98,7 +99,26 @@ public class addEmployeeFrame extends Application{
             }
         });
         
-       */ 
+       */
+        addButton.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent e) {
+               Employee E = new Employee(Integer.valueOf(EId.getText()), EF.getText(), EL.getText(), Integer.valueOf(EP.getText()), EA.getText());
+             /*C.write(CId.getText(),"C:\\Users\\1300180\\Desktop\\POS\\logIn\\src\\core\\addC.txt", true);
+               C.write(CF.getText(),"C:\\Users\\1300180\\Desktop\\POS\\logIn\\src\\core\\addC.txt",true );
+               C.write(CL.getText(),"C:\\Users\\1300180\\Desktop\\POS\\logIn\\src\\core\\addC.txt",true);
+               C.write(CP.getText(),"C:\\Users\\1300180\\Desktop\\POS\\logIn\\src\\core\\addC.txt",true);
+               C.write(CA.getText(),"C:\\Users\\1300180\\Desktop\\POS\\logIn\\src\\core\\addC.txt",true);
+               */
+               E.write(E);
+               stage.close();
+               AdminPanel admin = new AdminPanel();
+               Stage s = new Stage();
+               admin.start(s);                
+            }
+        });
+        
         back.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override

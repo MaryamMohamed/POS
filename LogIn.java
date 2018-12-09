@@ -64,14 +64,14 @@ public class LogIn extends Application {
 
         PasswordField passwordPF = new PasswordField();
         grid.add(passwordPF, 1, 2);
-
-        ToggleGroup TG = new ToggleGroup();
+/*
+        //ToggleGroup TG = new ToggleGroup();
         RadioButton r1 = new RadioButton("Admin");
         grid.add(r1, 0, 4);
         RadioButton r2 = new RadioButton("Employee");
         grid.add(r2, 1, 4);
-        TG.getToggles().addAll(r1,r2);
-        
+       // TG.getToggles().addAll(r1,r2);
+ */       
         Button loginButton = new Button("Sign in");
         GridPane.setHalignment(loginButton, HPos.RIGHT);
         grid.add(loginButton, 1, 5);        
@@ -89,7 +89,7 @@ public class LogIn extends Application {
             @Override
             public void handle(ActionEvent e) {
               
-                if(userNameTF.getText().equals("Admin")&&passwordPF.getText().equals("Admin1234")/*&& TG.equals(r1(*/ ) // مش عارفة اخليه يختار واحد بس
+                if(userNameTF.getText().equals("Admin")&&passwordPF.getText().equals("Admin1234")) // مش عارفة اخليه يختار واحد بس
                 {
                     primaryStage.close();
                     AdminPanel adminP = new AdminPanel();
@@ -101,7 +101,7 @@ public class LogIn extends Application {
                         Logger.getLogger(LogIn.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-                else if(userNameTF.getText().equals("Employee")&&passwordPF.getText().equals("Employee1234")/*&& TG.equals(r2)*/) //مش عارفة اخليه يختار واحد بس
+                else if(userNameTF.getText().equals("Employee")&&passwordPF.getText().equals("Employee1234"))
                 {
                     primaryStage.close();
                     EmployeePanel adminP = new EmployeePanel();

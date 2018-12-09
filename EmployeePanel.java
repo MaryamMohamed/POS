@@ -34,10 +34,28 @@ import javafx.scene.text.Text;
  * @author 1300180
  */
 class EmployeePanel extends Application{
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     @Override
-    public void start(Stage s) {
+    public void start(final Stage primaryStage) {
         
+        primaryStage.setTitle("Employee Panel");
+        GridPane grid = new GridPane();
+        grid.setAlignment(Pos.CENTER);
+        grid.setHgap(20);
+        grid.setVgap(20);
+        grid.setPadding(new Insets(25, 25, 25, 25));
+        
+        Label searchL = new Label("search");
+        searchL.setFont(Font.font("Tahoma", FontWeight.NORMAL, 25));
+        grid.add(searchL, 0, 0);
+        
+        TextField userNameTF = new TextField();
+        grid.add(userNameTF, 1, 1);
+
+
     }
     
 }
