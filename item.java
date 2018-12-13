@@ -3,23 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package itemstablefxjava;
+package core;
 
-
-import fileManger.filemanager;
 import java.util.ArrayList;
 import java.util.Date;
 
-
+/**
+ *
+ * @author 1300180
+ */
 public class item {
-    private String itemName;
+        private String itemName;
     private int itemID;
     private double itemPrice;
     private Date itemExpiredDate;
     private int quantity;
+    
     private final String itemsFileName = "items.txt";
     public static ArrayList <item> items = new ArrayList <item>();
-    //setters
+    FileManger  FManager  = new FileManger ();    
+
+    public item() {    }
+//setters
     public void setItemName(String itemName) {
         this.itemName = itemName;
     }
@@ -74,7 +79,7 @@ public class item {
     }
 //using array list items is faster in searching than searching in a file
     private void loadfromFile() {
-        items = (ArrayList<item>)(Object) filemanager.openToRead(itemsFileName);
+        items = (ArrayList<item>)(Object) FManager.read(itemsFileName);
     }
 //for loop to search if the id of the item is found in the array list if found it will return 0 else it will return -1
     private int getItemIndex (int ID){
@@ -91,5 +96,30 @@ public class item {
                 return "\nFOUND" + items.get(index).toString();
             else
                 return "\nNOT FOUND"; 
+    }
+        
+       public boolean additem() {
+        
+        if(FManager.write( GetitemData(),itemsFileName, true))
+            return true;
+        else
+            return false;
+        /*
+        loadFromFile();
+        Customers.add(this);
+        return commitToFile();
+                */
+    }  
+        public String displayAllgitems() {
+        loadfromFile();
+        String S = "\nAll item Data:\n";
+        for (item x : items) {
+            S = S + x.toString();
+        }
+        return S;
+    }
+  
+        private String GetitemData(){
+        return this.itemID + "@" + this.itemName  + "@" + this.itemPrice + "@" + this.itemExpiredDate + "@" + this.quantity;
     }
 }

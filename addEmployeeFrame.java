@@ -3,14 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package login;
+package frames;
 
-//import core.Employee;
-import core.Employee;
-import javafx.stage.Stage;
-import java.io.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import GUI.AdminDashboard;
+import core.employee;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -18,31 +14,35 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 /**
  *
  * @author 1300180
  */
-public class addEmployeeFrame extends Application{
+public class addEmployeeFrame extends AdminDashboard {
     
     @Override
-    public void start(final Stage stage) {
-        stage.setTitle("Add Employee Panel");
+    public void start(Stage primaryStage) {
+        primaryStage.setTitle("Add Employee Panel");
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(20);
         grid.setVgap(20);
         grid.setPadding(new Insets(25, 25, 25, 25));
-//////////////////////////////////        
+        
+        Label loginLabel = new Label("ADD EMPLOYEE");
+        loginLabel.setFont(Font.font("Tahoma", FontWeight.NORMAL, 25));
+        grid.add(loginLabel, 0, 0);
+
         Label Id = new Label("Employee ID:");
         grid.add(Id, 0, 1);
 
@@ -80,55 +80,63 @@ public class addEmployeeFrame extends Application{
         Button back = new Button("Back");
        
         grid.add(back, 0, 7);
-//////////////////////////////////        
-        Scene scene = new Scene(grid, 500, 400);
-        stage.setScene(scene);
-        stage.show();   
-/////////////////////////////////
-        /*addButton.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent e) {
-               Employee E = new Employee(Integer.valueOf(EId.getText()), EF.getText(), EL.getText(), Integer.valueOf(EP.getText()), EA.getText());
-               E.write(E);
-               
-               stage.close();
-               AdminPanel admin = new AdminPanel();
-               Stage s = new Stage();
-               admin.start(s);                
-            }
-        });
+///////////////////////////////////
+        final Text actiontarget = new Text();
         
-       */
-        addButton.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent e) {
-               Employee E = new Employee(Integer.valueOf(EId.getText()), EF.getText(), EL.getText(), Integer.valueOf(EP.getText()), EA.getText());
-             /*C.write(CId.getText(),"C:\\Users\\1300180\\Desktop\\POS\\logIn\\src\\core\\addC.txt", true);
-               C.write(CF.getText(),"C:\\Users\\1300180\\Desktop\\POS\\logIn\\src\\core\\addC.txt",true );
-               C.write(CL.getText(),"C:\\Users\\1300180\\Desktop\\POS\\logIn\\src\\core\\addC.txt",true);
-               C.write(CP.getText(),"C:\\Users\\1300180\\Desktop\\POS\\logIn\\src\\core\\addC.txt",true);
-               C.write(CA.getText(),"C:\\Users\\1300180\\Desktop\\POS\\logIn\\src\\core\\addC.txt",true);
-               */
-               E.write(E);
-               stage.close();
-               AdminPanel admin = new AdminPanel();
-               Stage s = new Stage();
-               admin.start(s);                
-            }
-        });
+        grid.add(actiontarget, 1, 9);
+//////////////////////////////////
+        Scene scene = new Scene(grid, 700, 700);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+/////////////////////////////////        
         
         back.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent t) {
-               stage.close();
-               AdminPanel admin = new AdminPanel();
+               primaryStage.close();
+               AdminDashboard admin = new AdminDashboard();
                Stage s = new Stage();
                admin.start(s);
             }
-        });    
+        });
+////////////////////////////////////        
+        
+        addButton.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent e) {
+              if(!EId.getText().equals("")&&!EF.getText().equals("")&&!EL.getText().equals("")&&!EP.getText().equals("")&&!EA.getText().equals("")){
+                  employee E = new employee();
+                  E.setID(Integer.parseInt(EId.getText()));
+                  E.setFristName(EF.getText());
+                  E.setLastName(EL.getText());
+                  E.setPhoneNumber(EP.getText());
+                  E.setAdress(EA.getText());
+                if(E.addemployee())
+                {
+                    actiontarget.setFill(Color.GREEN);
+                    actiontarget.setText("Added Successfully ... !");
+                }
+                else
+                {
+                    actiontarget.setFill(Color.RED);
+                    actiontarget.setText("Failed to insert ... !");
+                }
+              }
+              else{
+                    actiontarget.setFill(Color.RED);
+                    actiontarget.setText("Missing required Fields!\nPlease, complete them before submit!");
+              }               
+            }
+        });
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        launch(args);
     }
     
 }
