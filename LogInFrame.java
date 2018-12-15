@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package GUI;
-
+import core.Admin;
+import core.employee;
+import core.person;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
@@ -72,9 +74,11 @@ public class LogInFrame extends Application {
 
             @Override
             public void handle(ActionEvent e) {
-              
-                if(userNameTF.getText().equals("Admin")&&passwordPF.getText().equals("Admin1234"))
-                {
+                
+                
+                
+                if(/*x.login(userName.getText(), passwordPF.getText())*/userNameTF.getText().equals("Admin")&&passwordPF.getText().equals("Admin1234"))
+                {                    
                     primaryStage.close();
                     AdminDashboard adminDB = new AdminDashboard();
                     try {
@@ -87,15 +91,15 @@ public class LogInFrame extends Application {
                 }
                 else if(userNameTF.getText().equals("Employee")&&passwordPF.getText().equals("Employee1234"))
                 {
-                    primaryStage.close();
-                    EmployeeDashboard adminDB = new EmployeeDashboard();
-                    try {
-                        Stage s = new Stage();
-                        adminDB.start(s);
+                        primaryStage.close();
+                        EmployeeDashboard adminDB = new EmployeeDashboard();
+                        try {
+                            Stage s = new Stage();
+                            adminDB.start(s);
 
-                    } catch (Exception ex) {
-                        Logger.getLogger(LogInFrame.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                        } catch (Exception ex) {
+                            Logger.getLogger(LogInFrame.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                 }
                 else{
                     actiontarget.setFill(Color.RED);

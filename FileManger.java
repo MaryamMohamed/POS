@@ -40,7 +40,7 @@ public class FileManger {
             System.out.println(e);
         }
 
-        if (FilePath.equals("customer.txt")) {
+        if (FilePath.equals("Customers.txt")) {
 
             ArrayList<Customer> customers = new ArrayList<Customer>();
             Customer x;
@@ -50,7 +50,12 @@ public class FileManger {
                 x = new Customer();
                 String Line = Reader.nextLine();
                 String[] seprated = Line.split("@");
-
+                x.setID(Integer.parseInt(seprated[0]));
+                x.setFristName(seprated[1]);
+                x.setLastName(seprated[2]);
+                x.setPhoneNumber(seprated[3]);
+                x.setAdress(seprated[4]);
+//
 //                x.setID(Integer.parseInt(seprated[0]));
 //                x.setFName(seprated[1]);
 //                x.setLName(seprated[2]);
@@ -86,8 +91,13 @@ public class FileManger {
                 x = new employee();
                 String Line = Reader.nextLine();
                 String[] seprated = Line.split("@");
-
-//                x.setID(Integer.parseInt(seprated[0]));
+                
+                  
+                x.setID(Integer.parseInt(seprated[0]));
+                x.setFristName(seprated[1]);
+                x.setLastName(seprated[2]);
+                x.setPhoneNumber(seprated[3]);
+                x.setAdress(seprated[4]);
 //                x.setFName(seprated[1]);
 //                x.setLName(seprated[2]);
 //                x.setAge(Integer.parseInt(seprated[3]));
@@ -122,6 +132,13 @@ public class FileManger {
                 x = new item();
                 String Line = Reader.nextLine();
                 String[] seprated = Line.split("@");
+                x.setItemID(seprated[0]);
+                x.setItemName(seprated[1]);
+                x.setItemPrice(Double.parseDouble(seprated[3]));
+                x.setQuantity(Integer.parseInt(seprated[4]));
+//                x.setItemExpiredDate(seprated[5]);
+//                x.setItemExpiredDate(seprated[5]);
+                
 
 //                x.setID(Integer.parseInt(seprated[0]));
 //                x.setFName(seprated[1]);

@@ -62,16 +62,16 @@ public class addEmployeeFrame extends AdminDashboard {
         grid.add(EL, 1, 3);
 //////////////////////////////////        
         Label EPhone = new Label("Employee Phone:");
-        grid.add(EPhone, 0, 4);
+        grid.add(EPhone, 0, 5);
 
         final TextField EP = new TextField();
-        grid.add(EP, 1, 4);
+        grid.add(EP, 1, 5);
 ////////////////////////////////////        
         Label EAdress = new Label("Employee Adress:");
-        grid.add(EAdress, 0, 5);
+        grid.add(EAdress, 0, 4);
 
         final TextField EA = new TextField();
-        grid.add(EA, 1, 5);
+        grid.add(EA,1, 4);
 ///////////////////////////////////        
         Button addButton = new Button("Add");
         

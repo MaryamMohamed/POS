@@ -22,6 +22,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import frames.itemFrame;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author 1300180
@@ -55,6 +57,27 @@ public class EmployeeDashboard extends LogInFrame {
         Scene scene = new Scene(grid, 700, 700);
         primaryStage.setScene(scene);
         primaryStage.show();
+        
+        Button SignOut = new Button("          Sign Out          ");
+          grid.add(SignOut, 1, 5);
+          GridPane.setHalignment(SignOut, HPos.CENTER);
+          
+          
+          SignOut.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+              public void handle(ActionEvent t) {
+                  primaryStage.close();
+                  LogInFrame LF = new LogInFrame();
+                  try {
+                        Stage s = new Stage();
+                        LF.start(s);
+
+                    } catch (Exception ex) {
+                        Logger.getLogger(LogInFrame.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            });
+
         
         searchB.setOnAction(new EventHandler<ActionEvent>() {
 

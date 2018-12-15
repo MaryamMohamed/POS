@@ -63,16 +63,16 @@ public class addCustomerFrame extends AdminDashboard {
         grid.add(CL, 1, 3);
 //////////////////////////////////        
         Label CPhone = new Label("Customer Phone:");
-        grid.add(CPhone, 0, 4);
+        grid.add(CPhone, 0, 5);
 
         final TextField CP = new TextField();
-        grid.add(CP, 1, 4);
+        grid.add(CP, 1, 5);
 ////////////////////////////////////        
         Label CAdress = new Label("Customer Adress:");
-        grid.add(CAdress, 0, 5);
+        grid.add(CAdress, 0, 4);
 
         final TextField CA = new TextField();
-        grid.add(CA, 1, 5);
+        grid.add(CA, 1, 4);
 ///////////////////////////////////        
         Button addButton = new Button("Add");
         

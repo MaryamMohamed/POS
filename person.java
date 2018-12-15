@@ -31,6 +31,9 @@ public abstract class person {
         this.pass = pass;
     }
    
+    @Override
+    public abstract String toString();
+    
     public void setID(int ID) {
         this.ID = ID;
     }
@@ -74,17 +77,14 @@ public abstract class person {
     public String getPass() {
         return pass;
     }
-    @Override
-    public abstract String toString();
+    
+//
+//public boolean login(String userName, String Pass){
+//       return false;
+//}
+    
 
-public boolean login(String userName, String Pass) {
-        if (userName.equals("Admin@yahoo.com") && Pass.equals("12345678")) {
-            return true;
-        }
-        return false;
-    }
 }
-
 //}
 //class person {
 //    

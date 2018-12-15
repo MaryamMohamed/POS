@@ -110,18 +110,14 @@ public class updateCustomerFrame extends AdminDashboard {
 //////////////////////////////////////        
         
         searchButton.setOnAction(new EventHandler<ActionEvent>() {
-
+            Customer C = new Customer();
             @Override
             public void handle(ActionEvent e) {
               if(!search.getText().equals("")){
-                  Customer C = new Customer();
+                  
                   Customer returned = C.searchCustomerById(Integer.parseInt(search.getText()));
                   if (returned.getID() > 0) {
-                      CId.setText(""+C.getID());
-                      CF.setText(""+C.getFristName());
-                      CL.setText(""+C.getLastName());
-                      CP.setText(""+C.getAdress());
-                      CA.setText(""+C.getPhoneNumber());
+                      setPanelData(returned);
             } else {
                       actiontarget.setFill(Color.RED);
                       actiontarget.setText("Not Found ...!");
@@ -131,6 +127,13 @@ public class updateCustomerFrame extends AdminDashboard {
                     actiontarget.setFill(Color.RED);
                     actiontarget.setText("Missing required Fields!\nPlease, complete them before submit!");
               }               
+            }
+            private void setPanelData(Customer c) {
+                      CId.setText(""+C.getID());
+                      CF.setText(""+C.getFristName());
+                      CL.setText(""+C.getLastName());
+                      CP.setText(""+C.getAdress());
+                      CA.setText(""+C.getPhoneNumber());
             }
         });
         
@@ -146,17 +149,16 @@ public class updateCustomerFrame extends AdminDashboard {
                   C.setPhoneNumber(CP.getText());
                   C.setAdress(CA.getText());
                   
- //                 C.updateCustomer(0,Customer C);
-//                if(C.updateCustomer(0,Customer C))
-//                {
-//                    actiontarget.setFill(Color.GREEN);
-//                    actiontarget.setText("Updated Successfully ... !");
-//                }
-//                else
-//                {
-//                    actiontarget.setFill(Color.RED);
-//                    actiontarget.setText("Failed to Update ... !");
-//                }
+                if(C.updateCustomer())
+                {
+                    actiontarget.setFill(Color.GREEN);
+                    actiontarget.setText("Updated Successfully ... !");
+                }
+                else
+                {
+                    actiontarget.setFill(Color.RED);
+                    actiontarget.setText("Failed to Update ... !");
+                }
               }
               else{
                     actiontarget.setFill(Color.RED);
@@ -171,16 +173,16 @@ public class updateCustomerFrame extends AdminDashboard {
             public void handle(ActionEvent e) {
               if(!search.getText().equals("")){
                   Customer C = new Customer();
-//                if(C.deleteCustomer(Integer.parseInt(CId.getText())))
-//                {
-//                    actiontarget.setFill(Color.GREEN);
-//                    actiontarget.setText("Deleted Successfully ... !");
-//                }
-//                else
-//                {
-//                    actiontarget.setFill(Color.RED);
-//                    actiontarget.setText("Failed to Deleted ... !");
-//                }
+                if(C.deleteCustomer(Integer.parseInt(CId.getText())))
+                {
+                    actiontarget.setFill(Color.GREEN);
+                    actiontarget.setText("Deleted Successfully ... !");
+                }
+                else
+                {
+                    actiontarget.setFill(Color.RED);
+                    actiontarget.setText("Failed to Deleted ... !");
+                }
               }
               else{
                     actiontarget.setFill(Color.RED);

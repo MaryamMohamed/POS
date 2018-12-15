@@ -9,6 +9,9 @@ import frames.addCustomerFrame;
 import frames.addEmployeeFrame;
 import frames.updateCustomerFrame;
 import frames.reportsFrame;
+import static java.awt.SystemColor.desktop;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -170,6 +173,14 @@ public class AdminDashboard extends LogInFrame {
                 @Override
               public void handle(ActionEvent t) {
                   primaryStage.close();
+                  LogInFrame LF = new LogInFrame();
+                  try {
+                        Stage s = new Stage();
+                        LF.start(s);
+
+                    } catch (Exception ex) {
+                        Logger.getLogger(LogInFrame.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             });
           
