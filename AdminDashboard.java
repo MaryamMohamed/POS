@@ -113,12 +113,6 @@ public class AdminDashboard extends LogInFrame {
                     Stage s = new Stage();
                     addEmployee.start(s);
                }
-//               else if (SelectedOption.equals("Delete employee")){
-//                    primaryStage.close();
-//                    deleteEmployeeFrame deleteEmployee = new deleteEmployeeFrame();
-//                    Stage s = new Stage();
-//                    deleteEmployee.start(s);
-//               }
                
                else if (SelectedOption.equals("Update/Delete employee")){
                     primaryStage.close();
@@ -137,18 +131,11 @@ public class AdminDashboard extends LogInFrame {
                String SelectedOption = (String) CustomerOptions.getValue();
 
                if (SelectedOption.equals("Add customer")){
-                    primaryStage.close();
                     addCustomerFrame addCustomer = new addCustomerFrame();
                     Stage s = new Stage();
                     addCustomer.start(s);
                }
-//               else if (SelectedOption.equals("Delete customer")){
-//                    primaryStage.close();
-//                    deleteCustomerFrame deleteCustomer = new deleteCustomerFrame();
-//                    Stage s = new Stage();
-//                    deleteCustomer.start(s);
-//               }
-               
+
                else if (SelectedOption.equals("Update/Delete customer")){
                     primaryStage.close();
                     updateCustomerFrame updateCustomer = new updateCustomerFrame();

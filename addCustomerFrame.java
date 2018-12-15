@@ -78,30 +78,14 @@ public class addCustomerFrame extends AdminDashboard {
         
         grid.add(addButton, 1, 7);
 ///////////////////////////////////
-        Button back = new Button("Back");
-       
-        grid.add(back, 0, 7);
-///////////////////////////////////
         final Text actiontarget = new Text();
         
         grid.add(actiontarget, 1, 9);
 //////////////////////////////////
-        Scene scene = new Scene(grid, 700, 700);
+        Scene scene = new Scene(grid, 500, 500);
         primaryStage.setScene(scene);
         primaryStage.show();
 /////////////////////////////////        
-        
-        back.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent t) {
-               primaryStage.close();
-               AdminDashboard admin = new AdminDashboard();
-               Stage s = new Stage();
-               admin.start(s);
-            }
-        });
-////////////////////////////////////        
         
         addButton.setOnAction(new EventHandler<ActionEvent>() {
 

@@ -6,10 +6,12 @@
 package frames;
 
 import GUI.EmployeeDashboard;
+import core.Customer;
 import core.item;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -49,11 +51,17 @@ public class customerFrame extends Application {
         Button searchButton = new Button("search");
         grid.add(searchButton, 2, 0);
 //////////////////////////////////
-        Button back = new Button("Back");
+        Button back = new Button("     Back    ");
         grid.add(back, 0, 7);
+        GridPane.setHalignment(back, HPos.CENTER);
 //////////////////////////////////
-        Button ADD = new Button("ADD");
-        grid.add(ADD, 1, 7);
+        Button ADD = new Button("     ADD     ");
+        grid.add(ADD, 1, 7);   
+        GridPane.setHalignment(ADD, HPos.CENTER);
+//////////////////////////////////
+        Button Invo = new Button("Go To Invoice");
+        grid.add(Invo, 2, 7);
+        GridPane.setHalignment(Invo, HPos.CENTER);
 ///////////////////////////////////
         Scene scene = new Scene(grid, 700, 700);
         primaryStage.setScene(scene);
@@ -72,20 +80,27 @@ public class customerFrame extends Application {
         });
 //////////////////////////////////////        
         
+        ADD.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent t) {
+               addCustomerFrame admin = new addCustomerFrame();
+               Stage s = new Stage();
+               admin.start(s);
+            }
+        });
+/////////////////////////////////////////
         searchButton.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent e) {
               if(!search.getText().equals("")){
-                  item I = new item();
-                 // item returned = I.searchCustomerById(Integer.parseInt(search.getText()));
-                  if (/*returned.getID() > 0*/true) {
-                      primaryStage.close();
-                      InvoiveFrame invo = new InvoiveFrame();
-                      Stage s = new Stage();
-                      invo.start(s);
-                                            
-            } else {
+                  Customer I = new Customer();
+                  Customer returned = I.searchCustomerById(Integer.parseInt(search.getText()));
+                  if (returned.getID() > 0) {
+                      actiontarget.setFill(Color.GREEN);
+                      actiontarget.setText("Customer Found ...!");
+                  } else {
                       actiontarget.setFill(Color.RED);
                       actiontarget.setText("Not Found ...!");
                   }
@@ -94,6 +109,17 @@ public class customerFrame extends Application {
                     actiontarget.setFill(Color.RED);
                     actiontarget.setText("Missing required Fields!\nPlease, complete them before submit!");
               }               
+            }
+        });
+//////////////////////////////////////
+    
+        Invo.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent t) {
+               InvoiveFrame admin = new InvoiveFrame();
+               Stage s = new Stage();
+               admin.start(s);
             }
         });
     }

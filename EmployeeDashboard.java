@@ -39,31 +39,21 @@ public class EmployeeDashboard extends LogInFrame {
             grid.setVgap(20);
             grid.setPadding(new Insets(25, 25, 25, 25));
             
-        Label searchLabel = new Label("SEARCH");
-          grid.add(searchLabel, 0, 0);
+        Button CustomerB = new Button("   Customer   ");
+          grid.add(CustomerB, 0, 0);
           
-          final ComboBox EmployeeOptions = new ComboBox();
-          EmployeeOptions.getItems().addAll(
-            "Search by Customer",            
-            "Search by Item"
-            );
-          EmployeeOptions.getSelectionModel().selectFirst();
-          grid.add(EmployeeOptions, 1, 0);
+        Button ItemB = new Button("     Item     ");
+          grid.add(ItemB, 2, 0);
           
-          Button searchB = new Button("       SEARCH     ");
-          GridPane.setHalignment(searchB, HPos.RIGHT);
-          grid.add(searchB, 2, 0);
-            
+        Button SignOut = new Button("          Sign Out          ");
+          grid.add(SignOut, 1, 5);
+          GridPane.setHalignment(SignOut, HPos.CENTER);
+        
         Scene scene = new Scene(grid, 700, 700);
         primaryStage.setScene(scene);
         primaryStage.show();
         
-        Button SignOut = new Button("          Sign Out          ");
-          grid.add(SignOut, 1, 5);
-          GridPane.setHalignment(SignOut, HPos.CENTER);
-          
-          
-          SignOut.setOnAction(new EventHandler<ActionEvent>() {
+        SignOut.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
               public void handle(ActionEvent t) {
                   primaryStage.close();
@@ -77,33 +67,27 @@ public class EmployeeDashboard extends LogInFrame {
                     }
                 }
             });
-
         
-        searchB.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent e) {
-               String SelectedOption = (String) EmployeeOptions.getValue();
-
-               if (SelectedOption.equals("Search by Customer")){
-                    primaryStage.close();
-                    customerFrame customer = new customerFrame();
-                    Stage s = new Stage();
-                    customer.start(s);
-                   }
-                       
-               else if (SelectedOption.equals("Search by Item")){
-                    primaryStage.close();
+        ItemB.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+              public void handle(ActionEvent t) {
+                  primaryStage.close();
                     itemFrame item = new itemFrame();
                     Stage s = new Stage();
                     item.start(s);
-                   }
-                
                 }
             });
         
-          
-              }
+        CustomerB.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+              public void handle(ActionEvent t) {
+                  primaryStage.close();
+                    customerFrame customer = new customerFrame();
+                    Stage s = new Stage();
+                    customer.start(s);
+                }
+            });
+    }
 
     /**
      * @param args the command line arguments

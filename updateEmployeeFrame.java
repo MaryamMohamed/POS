@@ -117,7 +117,7 @@ public class updateEmployeeFrame extends AdminDashboard {
               if(!search.getText().equals("")){
                  
                   employee returned = E.searchemployeeById(Integer.parseInt(search.getText()));
-                  if (returned.getID() != 0) {
+                  if (returned.getID() > 0) {
                       setPanelData(returned);   
             } else {
                       actiontarget.setFill(Color.RED);
